@@ -10,8 +10,6 @@ import requests
 import json
 from config import *
 
-from pprint import pprint
-
 # Please note, this application most likely has security issues and should
 # not be assumed to be secure in its current state.
 
@@ -126,10 +124,6 @@ def checkPackage():
                 num_releases = len(data['releases'])
                 latest_version = data['info']['version']
 
-                #result += (package_name + " has " + str(num_releases) + " releases") + "\n"
-                #print("The most recent version is " + latest_version)
-                #print("Checking " + data['releases'][latest_version][0]['filename'])
-                #print(data['releases'][latest_version][0]['has_sig'])
                 if data['releases'][latest_version][0]['has_sig'] == True:
                     result = download(data['releases'][latest_version][0]['url'], latest_version)
                 else:
@@ -162,7 +156,6 @@ def uploadKey():
                 if result.imported == 0:
                     error = result.results[0]['text']
                 elif result.imported == 1:
-                    pprint(vars(result))
                     short_id = result.fingerprints[0][-16:]
                     info = "Imported " + short_id
             else:
@@ -183,8 +176,8 @@ def deleteKey():
 # /verify/<name>/<version>
 # API call to check a package
 # Version is optional and defaults to the most recent
-@app.route('/verify/<name>', defaults={'version': None})
-@app.route('/verify/<name>/<version>', methods=['GET'])
+@app.route('/api/verify/<name>', defaults={'version': None})
+@app.route('/api/verify/<name>/<version>', methods=['GET'])
 def verify(name, version):
     # No authentication currently
     # Current package version is checked
