@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Upload PGP Key{% endblock %}
+{% block content %}
+    <h2>Upload PGP Key</h2>
+    {% if error %}
+      <div class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+    {% endif %}
+    {% if info %}
+      <div class="alert alert-primary" role="alert">
+        {{info}}
+      </div>
+    {% endif %}
+    <small>Search here: <a href="https://pgp.mit.edu/" target="_blank">MIT PGP Keyserver</a></small>
+    <form class="pgpUpload" action="uploadKey" method="post">
+      <textarea name="pubkey" class="form-control" required></textarea><br>
+      <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
+
+
+{% endblock %}

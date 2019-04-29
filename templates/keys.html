@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}PGP Keys{% endblock %}
+{% block content %}
+    <h2>PGP Public Keys</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Key ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Expires</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pubkey in keys %}
+          <tr>
+            <th scope="row" class="code">{{ pubkey['keyid'] }}</th>
+            <td>{{ pubkey['uids'][0] }}</td>
+            <td>{{ pubkey['expires']|ctime }}</td>
+            <td>
+              <form class="deleteKey" action="deleteKey" method="post">
+                <input type="hidden" name="keyID" value="{{pubkey['fingerprint']}}">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+
+            </td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+{% endblock %}

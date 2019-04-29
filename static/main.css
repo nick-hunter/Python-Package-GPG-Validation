@@ -1,0 +1,30 @@
+html,
+body {
+  height: 100%;
+}
+
+.container{
+  margin-top: 50px;
+  max-width: 960px;
+}
+
+.header{
+
+  width: 100%;
+  padding: 10px;
+  text-align: right;
+}
+
+.sidebar{
+  background-color: #e5e5e5;
+  padding: 15px;
+}
+
+.content{
+  background-color: #f2f2f2;
+  padding: 15px;
+}
+
+.code{
+    font-family: Courier, Monaco, monospace;
+}

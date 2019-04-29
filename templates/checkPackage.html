@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Check PyPi Package{% endblock %}
+{% block content %}
+    <h2>Check Package Signature</h2>
+    {% if error %}
+      <div class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+    {% endif %}
+    {% if info %}
+      <div class="alert alert-primary" role="alert">
+        {{info}}
+      </div>
+    {% endif %}
+    <form class="checkPackage" action="checkPackage" method="post">
+      <div class="form-group">
+        <label for="packageName">Package Name</label>
+        <input type="text" class="form-control" name="packageName" aria-describedby="searchHelp" placeholder="...">
+        <small id="searchHelp" class="form-text text-muted">We'll search the Python Package Index (PyPi) for you.</small>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
+
+    {% if result %}
+    <div class="card">
+      <div class="card-body">
+        Results for: {{name}} (version {{result["version"]}}) <br>
+        Verification Status: {{result["verified_status"]}}<br>
+        Key ID: {{result["key_id"]}}<br>
+        Timestamp: {{result["timestamp"]}}
+
+      </div>
+    </div>
+    <br>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <title>Login</title>
+  </head>
+  <body class="text-center">
+      <form class="form-signin" method="post" action="/login">
+        <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+        {% if error %}
+          <div class="alert alert-info" role="alert">
+              {{ error }}
+          </div>
+        {% endif %}
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+  </body>
+</html>
+
+</html>
