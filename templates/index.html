@@ -1,8 +1,38 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    <h2>Python Package Signature Verification</h2>
-    <p class="important">
-      Welcome!
-    </p>
+
+    {% if lookup_history %}
+    <h2>Python Package Signature Verification History</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Package</th>
+          <th scope="col">Version</th>
+          <th scope="col">Status</th>
+          <th scope="col">Requestor</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for result in lookup_history %}
+          <tr>
+            <th scope="row">{{ result[1] }}</th>
+            <td>{{ result[2] }}</td>
+            <td>{{ result[6] }}</td>
+            <td>
+              {% if result[3] is not none %}
+                {{ result[3] }}
+              {% else %}
+                {% if result[4] is not none %}
+                  {{ result[4] }}
+                {% endif %}
+              {% endif %}
+
+            </td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+    {% endif %}
 {% endblock %}

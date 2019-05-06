@@ -28,3 +28,9 @@ body {
 .code{
     font-family: Courier, Monaco, monospace;
 }
+
+.api-keys:disabled{
+  background-color: grey;
+  border-color: grey;
+  opacity: .15;
+}
