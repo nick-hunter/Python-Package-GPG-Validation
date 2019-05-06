@@ -24,10 +24,15 @@
     {% if result %}
     <div class="card">
       <div class="card-body">
-        Results for: {{name}} (version {{result["version"]}}) <br>
-        Verification Status: {{result["verified_status"]}}<br>
-        Key ID: {{result["key_id"]}}<br>
-        Timestamp: {{result["timestamp"]}}
+        Results for: {{name}}
+        {% if result["error"] %}
+          <br/>{{result["error"]}}
+        {% else %}
+          (version {{result["version"]}}) <br>
+          Verification Status: {{result["verified_status"]}}<br>
+          Key ID: {{result["key_id"]}}<br>
+          Timestamp: {{result["timestamp"]}}
+        {% endif %}
 
       </div>
     </div>

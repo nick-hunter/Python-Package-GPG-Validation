@@ -1,7 +1,7 @@
 # config.py
 
 #Database file location
-DATABASE = 'dev.db'
+DATABASE = 'prod.db'
 
 #GNUPG home directory
 GPG_home='/Users/nick/Documents/JuniorIS/.gnupg'
